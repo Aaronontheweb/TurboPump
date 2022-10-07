@@ -62,8 +62,8 @@ namespace TurboPump
     /// <typeparam name="T">The type of work managed by this queue.</typeparam>
     public sealed class CircularWorkStealingQueue<T>
     {
-        private static readonly (OpCode status, T item) Empty = (OpCode.Empty, default);
-        private static readonly (OpCode status, T item) Abort = (OpCode.Abort, default);
+        private static readonly (OpCode status, T item) Empty = (OpCode.Empty, default)!;
+        private static readonly (OpCode status, T item) Abort = (OpCode.Abort, default)!;
         
         private const int LogInitialSize = 16;
         private const int ShrinkThreshold = 4;
@@ -159,7 +159,7 @@ namespace TurboPump
                 item = default;
             
             Volatile.Write(ref _bottom, t);
-            return (OpCode.Empty, item);
+            return (OpCode.Empty, item)!;
         }
 
         /// <summary>
