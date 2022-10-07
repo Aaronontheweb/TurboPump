@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurboPump", "src\TurboPump\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurboPump.Tests", "src\TurboPump.Tests\TurboPump.Tests.csproj", "{A75DCA31-7786-455D-9260-29A79ACD7DC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurboPump.Benchmarks", "src\TurboPump.Benchmarks\TurboPump.Benchmarks.csproj", "{53934F67-281A-4D50-B3B3-D155148A7817}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{A75DCA31-7786-455D-9260-29A79ACD7DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A75DCA31-7786-455D-9260-29A79ACD7DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A75DCA31-7786-455D-9260-29A79ACD7DC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53934F67-281A-4D50-B3B3-D155148A7817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53934F67-281A-4D50-B3B3-D155148A7817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53934F67-281A-4D50-B3B3-D155148A7817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53934F67-281A-4D50-B3B3-D155148A7817}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

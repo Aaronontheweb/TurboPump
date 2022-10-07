@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>TurboPump.Benchmarks.CircularWorkQueues.CircularWorkQueueBenchmark-20221007-105647</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19044
+AMD Ryzen 7 1700, 1 CPU, 16 logical and 8 physical cores
+.NET Core SDK=6.0.201
+  [Host]     : .NET Core 6.0.3 (CoreCLR 6.0.322.12309, CoreFX 6.0.322.12309), X64 RyuJIT
+  Job-PKQZYJ : .NET Core 6.0.3 (CoreCLR 6.0.322.12309, CoreFX 6.0.322.12309), X64 RyuJIT
+</code></pre>
+<pre><code>InvocationCount=1  UnrollFactor=1  
+</code></pre>
+
+<table>
+<thead><tr><th>Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Push</td><td>29.39 ns</td><td>0.315 ns</td><td>0.409 ns</td><td>29.41 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>PopOnly</td><td>63.03 ns</td><td>1.238 ns</td><td>1.474 ns</td><td>62.30 ns</td><td>-</td><td>-</td><td>-</td><td>26 B</td>
+</tr><tr><td>StealOnly</td><td>33.89 ns</td><td>0.648 ns</td><td>0.908 ns</td><td>33.19 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr></tbody></table>
+</body>
+</html>
