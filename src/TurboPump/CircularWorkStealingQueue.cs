@@ -4,17 +4,6 @@ using System.Threading;
 namespace TurboPump
 {
     /// <summary>
-    /// An asynchronous operation will be executed by a thread.
-    /// </summary>
-    public interface IRunnable
-    {
-        /// <summary>
-        /// Executes the action.
-        /// </summary>
-        void Run();
-    }
-
-    /// <summary>
     /// n^2 circular array that grows by doubling its size. Uses array-length modulo indexing to allow
     /// circular insert / fetch behavior. 
     /// </summary>
@@ -95,8 +84,8 @@ namespace TurboPump
 
         public void PushBottom(T item)
         {
-            var b = Interlocked.Read(ref _bottom);
-            var t = Interlocked.Read(ref _top);
+            var b = Volatile.Read(ref _bottom);
+            var t = Volatile.Read(ref _top);
             var a = Volatile.Read(ref _active);
             var size = b - t;
             
@@ -107,21 +96,21 @@ namespace TurboPump
             }
 
             a[b] = item;
-            Interlocked.Exchange(ref _bottom, b + 1);
+            Volatile.Write(ref _bottom, b + 1);
         }
 
         public (OpCode status, T item) PopBottom()
         {
-            var b = Interlocked.Read(ref _bottom);
+            var b = Volatile.Read(ref _bottom);
             var a = Volatile.Read(ref _active);
             b = b - 1;
-            Interlocked.Exchange(ref _bottom, b);
+            Volatile.Write(ref _bottom, b);
             
-            var t = Interlocked.Read(ref _top);
+            var t = Volatile.Read(ref _top);
             var size = b - t;
             if (size < 0) // bottom is empty
             {
-                Interlocked.Exchange(ref _bottom, t);
+                Volatile.Write(ref _bottom, t);
                 return Empty;
             }
 
@@ -136,14 +125,14 @@ namespace TurboPump
             if (!SwapTop(t, t + 1))
                 item = default;
             
-            Interlocked.Exchange(ref _bottom, t);
+            Volatile.Write(ref _bottom, t);
             return (OpCode.Empty, item);
         }
 
         public (OpCode status, T item) Steal()
         {
-            var b = Interlocked.Read(ref _bottom);
-            var t = Interlocked.Read(ref _top);
+            var b = Volatile.Read(ref _bottom);
+            var t = Volatile.Read(ref _top);
             var a = Volatile.Read(ref _active);
             var size = b - t;
             if (size <= 0)
