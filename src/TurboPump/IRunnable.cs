@@ -1,4 +1,4 @@
-﻿namespace TurboPump
+namespace TurboPump
 {
     /// <summary>
     /// An asynchronous operation will be executed by a thread.
@@ -9,9 +9,5 @@
         /// Executes the action.
         /// </summary>
         void Run();
-    }
-    
-    public class WorkQueue
-    {
     }
 }
